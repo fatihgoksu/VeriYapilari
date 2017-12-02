@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdlib.h>//malloc ve free fonksiyonları için eklendi 
+#include <stdlib.h>//malloc ve free fonksiyonlarÄ± iÃ§in eklendi 
 using namespace std;
 struct dugum
 {
@@ -15,7 +15,7 @@ class TekYonluBagliListe
 	public:
 			dugum *ilk;//ilk dugumun adresi
 			dugum *son;//son dugumun adresi
-			TekYonluBagliListe()//yapıcımız
+			TekYonluBagliListe()//yapÄ±cÄ±mÄ±z
 			{
 				ilk=NULL;
 				son=NULL;
@@ -46,11 +46,11 @@ class TekYonluBagliListe
 				
 			}
 			
-		void listele() //listeyi yazdırıyor
+		void listele() //listeyi yazdÄ±rÄ±yor
 		{
 			dugum *p;
 			p=ilk;
-			if(p==NULL) cout<<"Liste boş"<<endl;
+			if(p==NULL) cout<<"Liste boÅŸ"<<endl;
 			while(p!=NULL)
 			{
 				cout<<"*******************"<<endl;
@@ -62,7 +62,7 @@ class TekYonluBagliListe
 				p=p->next;				
 			}			
 		}
-	//arama işlemi yapılıyor		
+	//arama iÅŸlemi yapÄ±lÄ±yor		
 	dugum * araDugum(string no)
 	{
 		dugum *p;
@@ -91,7 +91,7 @@ int main()
 	cout<<"Numara:"<<ilk->numara;
 	cout<<" Ortalamasi:"<<ilk->ortalama<<endl;
 	
-	// 2. düğüm oluşturuyoruz
+	// 2. dÃ¼ÄŸÃ¼m oluÅŸturuyoruz
 	ilk->next=new dugum;
 	ilk->next->adsoyad="Batuhan Yerlikaya";
 	ilk->next->numara="1004";
@@ -100,7 +100,7 @@ int main()
 	ilk->next->ortalama=(double)(ilk->next->vize*0.4+ilk->next->final*0.6);	
 	cout<<"Numara:"<<ilk->next->numara;
 	cout<<" Ortalamasi:"<<ilk->next->ortalama<<endl;
-	// 3. düğümü oluşturuyoruz
+	// 3. dÃ¼ÄŸÃ¼mÃ¼ oluÅŸturuyoruz
 	dugum *d3;
 	d3=new dugum;
 	d3->adsoyad="Umit Gelener";
@@ -118,7 +118,7 @@ int main()
 	bliste.ekleDugum("1002","Ayse",70,80);
 	bliste.ekleDugum("1003","Ali",90,100);
 	bliste.listele();
-	//arama işlemi 
+	//arama iÅŸlemi 
 	dugum *ara;
 	ara=bliste.araDugum("1002");
 	if(ara==NULL) 
