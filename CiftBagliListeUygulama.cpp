@@ -1,33 +1,33 @@
 #include<iostream>
-#include<cstdlib> //new ve delete/malloc ve free için
+#include<cstdlib> //new ve delete/malloc ve free iÃ§in
 using namespace std; 
-struct kitapDugum //kitaplarý düðümde saklayacaðýz
+struct kitapDugum //kitaplarÄ± dÃ¼ÄŸÃ¼mde saklayacaÄŸÄ±z
 {
-	int id; //kitap numarasý, arama ve silmeyi bununla yapýlacak
+	int id; //kitap numarasÄ±, arama ve silmeyi bununla yapÄ±lacak
 	string adi;
 	string turu;
 	string yazarAdi;
 	string tarihi;
 	int baskiNo;
-	kitapDugum *previous; //onceki düðümü gösterecek
-	kitapDugum *next; //sonraki düðümü gösterecek	
+	kitapDugum *previous; //onceki dÃ¼ÄŸÃ¼mÃ¼ gÃ¶sterecek
+	kitapDugum *next; //sonraki dÃ¼ÄŸÃ¼mÃ¼ gÃ¶sterecek	
 };
 
 class CiftYonluBagliListe
 {
 	public:
-			kitapDugum *ilk; //listenin baþýný kontrol edecek
+			kitapDugum *ilk; //listenin baÅŸÄ±nÄ± kontrol edecek
 			kitapDugum *son; //listenin sonunu kontrol edecek
-			//Yapýcý
+			//YapÄ±cÄ±
 			CiftYonluBagliListe()
 			{
-				ilk=NULL; //ilk deðer atamasý yaptýk
+				ilk=NULL; //ilk deÄŸer atamasÄ± yaptÄ±k
 				son=NULL;
 			}
 			//Ekleme Fonksiyonu
 			void ekleKitap(int no,string ad,string y,string t,string ta,int bn)
 			{
-				//Dugumu oluþturuyoruz
+				//Dugumu oluÅŸturuyoruz
 				kitapDugum *d;
 				d=new kitapDugum;
 				d->id=no;
@@ -37,17 +37,17 @@ class CiftYonluBagliListe
 				d->tarihi=ta;
 				d->baskiNo=bn;
 				//d->next=NULL;
-				if(ilk==NULL) //liste boþsa ve ilk eleman ekleniyor ise
+				if(ilk==NULL) //liste boÅŸsa ve ilk eleman ekleniyor ise
 				{
 					ilk=d;
 					son=ilk; //d de atanabilir
-					ilk->previous=NULL; //tek yonlüden tek farký
+					ilk->previous=NULL; //tek yonlÃ¼den tek farkÄ±
 					ilk->next=NULL;
 				}
 				else //listede kitap varsa 
 				{
 					son->next=d;
-					d->previous=son; //tek yönlüden tek farký
+					d->previous=son; //tek yÃ¶nlÃ¼den tek farkÄ±
 					son=d;
 					son->next=NULL;					
 				}
@@ -59,7 +59,7 @@ class CiftYonluBagliListe
 				kitapDugum *p;
 				p=ilk;
 				if(p==NULL) cout<<"Liste bos"<<endl;
-				while(p!=NULL) //listede son eleman NULL oluncaya kadar düðümler arasýna gezecek
+				while(p!=NULL) //listede son eleman NULL oluncaya kadar dÃ¼ÄŸÃ¼mler arasÄ±na gezecek
 				{
 					cout<<"**************"<<endl;
 					cout<<"Kitap Id="<<p->id<<endl;
@@ -68,7 +68,7 @@ class CiftYonluBagliListe
 					cout<<"Kitap Turu="<<p->turu<<endl;
 					cout<<"Kitap Tarihi="<<p->tarihi<<endl;
 					cout<<"Kitap Baski Sayisi="<<p->baskiNo<<endl;					
-					p=p->next; //bir sonraki düðüme geçiyoruz, demezsek sonsuz döngüye girer.
+					p=p->next; //bir sonraki dÃ¼ÄŸÃ¼me geÃ§iyoruz, demezsek sonsuz dÃ¶ngÃ¼ye girer.
 				}				
 			}
 			
@@ -80,40 +80,40 @@ class CiftYonluBagliListe
 				{
 					if(p->id==no)
 					{
-						return p; //kitabý bulduysak düðümü gönderiyoruz
+						return p; //kitabÄ± bulduysak dÃ¼ÄŸÃ¼mÃ¼ gÃ¶nderiyoruz
 					}
 					p=p->next;	
 				}
 				
-				return NULL; //bulamadýksay NULL gönderiyoruz				
+				return NULL; //bulamadÄ±ksay NULL gÃ¶nderiyoruz				
 			}
 };
 
 int main()
 {
-	/*kitapDugum *ilk; //kök düðüm ilk adresi tutacak
+	/*kitapDugum *ilk; //kÃ¶k dÃ¼ÄŸÃ¼m ilk adresi tutacak
 	ilk=new kitapDugum;
 	ilk->id=1;
-	ilk->adi="Don Kiþot";
-	ilk->turu="Dünya Klasikleri";
+	ilk->adi="Don KiÅŸot";
+	ilk->turu="DÃ¼nya Klasikleri";
 	ilk->yazarAdi="Cervantes";
 	ilk->tarihi="10/10/2015";
 	ilk->baskiNo=5;
-	ilk->previous=NULL;//ilk elemanýn öncesi NULL;
+	ilk->previous=NULL;//ilk elemanÄ±n Ã¶ncesi NULL;
 	ilk->next=NULL;
 	
-	//2. kitabý ekliyoruz..
-	kitapDugum *kitap2; //kök düðüm ilk adresi tutacak
+	//2. kitabÄ± ekliyoruz..
+	kitapDugum *kitap2; //kÃ¶k dÃ¼ÄŸÃ¼m ilk adresi tutacak
 	kitap2=new kitapDugum;
 	kitap2->id=2;
-	kitap2->adi="Ýkiz Bedenler";
+	kitap2->adi="Ä°kiz Bedenler";
 	kitap2->turu="Macera";
 	kitap2->yazarAdi="Tess Gerritsen";
 	kitap2->tarihi="10/10/2017";	
 	kitap2->baskiNo=20;
-	kitap2->previous=ilk;//ilk elemanýn öncesi NULL;
+	kitap2->previous=ilk;//ilk elemanÄ±n Ã¶ncesi NULL;
 	kitap2->next=NULL;
-	ilk->next=kitap2;//listeye kitabý ekliyoruz
+	ilk->next=kitap2;//listeye kitabÄ± ekliyoruz
 	*/
 	
 	CiftYonluBagliListe cbliste;
@@ -122,10 +122,10 @@ int main()
 	cbliste.ekleKitap(3,"Tutunamayanlar","Oguz Atay","Roman","10/10/2016",10);
 	
 	//cout<<"kitap adi:"<<cbliste.ilk->adi<<endl;
-	//Baðlý liste elemanlarý ekranda yazdýrýlýyor
+	//BaÄŸlÄ± liste elemanlarÄ± ekranda yazdÄ±rÄ±lÄ±yor
 	
 	cbliste.listele();
-	// Arama Yapýyoruz
+	// Arama YapÄ±yoruz
 	kitapDugum *p=NULL;
 	p=cbliste.araKitap(2);
 	if(p==NULL)
@@ -142,10 +142,3 @@ int main()
 	}
 	return 0;
 }
-
-
-
-
-
-
-
